@@ -1,6 +1,6 @@
 # TODO: """Hyping myself up"""
 
-# TODO: author: str = "730323188"
+# TODO: __author__: str = "730323188"
 
 # TODO: Implement your program logic here
 

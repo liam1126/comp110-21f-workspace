@@ -1,5 +1,5 @@
 """Practice with numeric operators"""
-author: str = "730323188"
+__author__: str = "730323188"
 
 left_side: int = int(input("Left-hand side: "))
 right_side: int = int(input("Right-hand side: "))
