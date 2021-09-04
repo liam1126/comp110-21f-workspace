@@ -1,10 +1,10 @@
-"""Practice with numeric operators"""
+"""Practice with numeric operators."""
 __author__: str = "730323188"
 
 left_side: int = int(input("Left-hand side: "))
 right_side: int = int(input("Right-hand side: "))
 exponent_value: int = (left_side ** right_side)
-division_value: int = (left_side / right_side)
+division_value: float = (left_side / right_side)
 integer_division_value: int = (left_side // right_side)
 remainder_value: int = (left_side % right_side)
 

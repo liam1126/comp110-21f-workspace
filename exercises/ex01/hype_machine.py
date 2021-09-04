@@ -1,8 +1,5 @@
-# TODO: """Hyping myself up"""
-
-# TODO: __author__: str = "730323188"
-
-# TODO: Implement your program logic here
+"""Hyping myself up."""
+__author__: str = "730323188"
 
 name: str = input("What is your name? ")
 print("Oh right, " + name + ", it's lovely to see you again")
