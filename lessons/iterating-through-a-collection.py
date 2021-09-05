@@ -6,8 +6,8 @@ user_string: str = input("Give me a string! ")
 # in programming. i is short for iteration
 i: int = 0
 
-while i < len(user_string)
-    print(user_strin[i]):
+while i < len(user_string):
+    print(user_string[i])
     i = i + 1
 
 print("Done!")
