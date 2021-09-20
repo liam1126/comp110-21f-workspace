@@ -12,5 +12,5 @@ while i < len(word):
         count = count + 1
     i = i + 1
 
-count = str(count)
-print("Count: " + count)
+final_count: str = str(count)
+print("Count: " + final_count)

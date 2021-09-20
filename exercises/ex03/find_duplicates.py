@@ -13,8 +13,8 @@ while i < len(word):
         char: str = word[j]
         if letter == char:
             dup = True
-        j= j + 1
+        j = j + 1
     i = i + 1
 
-final_output: str = str(dup)
-print(final_output)
+
+print("Found duplicate: " + str(dup))
