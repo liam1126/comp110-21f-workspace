@@ -4,7 +4,6 @@ __author__: str = "730323188"
 
 points: int
 player: str
-game_loop: bool = False
 POINTS_OUTPUT: str = "Desire to drop out of school and live alone on a farm: "
 COOL_GUY_EMOJI: str = "\U0001F60E"
 WINCING_GUY_EMOJI: str = "\U0001F974"
@@ -13,10 +12,10 @@ YEEHAW_GUY: str = "\U0001F920"
 
 def main() -> None:
     """Entrypoint for experience."""
-    global game_loop
-    while game_loop == False:    
-        global points
-        points = 0
+    game_loop: bool = False   
+    global points
+    points = 0
+    while game_loop == False: 
         greet()
         first_choice: str = input("You wake up (way later than you hoped, honestly). Do you: a) make yourself a coffee, b) hop on a bus, or c) text your friend to ask for a ride? ")
         if first_choice == "a":
@@ -33,7 +32,7 @@ def main() -> None:
     
 def greet() -> None:
     """Greeting & welcome message."""
-    print(f"It's monday morning at UNC. You have to go to class AND fullfill your basic survival needs {TIRED_GUY_EMOJI}. When prompted with multiple choices, simply enter the letter of your choice. Get to it, my friend!")
+    print(f"It's Monday morning at UNC. You have to go to class AND fullfill your basic survival needs {TIRED_GUY_EMOJI}. When prompted with multiple choices, simply enter the letter of your choice. Get to it, my friend!")
     global player
     player = input("What's your name? ")
 
@@ -42,7 +41,8 @@ def too_much_coffee() -> None:
     """The player chooses to drink coffee."""
     global points
     points = points + 20
-    print(f"The coffee is much stronger than you initially thought. You dissociate and function on autopilot all day. Nice moves, {player} {COOL_GUY_EMOJI}. Try again tomorrow.")
+    print(f"The coffee is much stronger than you initially thought. You dissociate and function on autopilot all day. Nice moves, {player} {COOL_GUY_EMOJI}.")
+    print("Maybe try again tomorrow.")
     print(f"{POINTS_OUTPUT}{points}")
 
 
@@ -53,11 +53,10 @@ def bus_ride() -> None:
     if choice_on_bus == "a":
         print("You find a seat next to a really sketchy frat dude that insists the party at his house on Friday will \"be an absolute movie,\" but you do make it to class on time.")
         points = points + 30
-        print(f"{POINTS_OUTPUT}{points}")
     else:
         print(f"It's 95 degrees outside, and you sweat like an absolute farm animal. Your friend drives past you and yells, \"The struggle is real, {player}!\" You die inside a bit and show up to class late {WINCING_GUY_EMOJI}")
         points = points + 50
-        print(f"{POINTS_OUTPUT}{points}")
+    print(f"{POINTS_OUTPUT}{points}")
 
 
 def text_friend (n:int) -> int:
@@ -71,7 +70,7 @@ def text_friend (n:int) -> int:
     breakfast: str = input("You realize you didn't eat breakfast, but you don't have much time. Do you ask to stop for food? a) yes or b) no ")
     if breakfast == "a":
         print(f"You pick up possibly the tastiest bagel you've ever had, and you make it to class on time. The stars are really aligning for you today {YEEHAW_GUY}.")
-        n = n - 10
+        n = n - 20
         print(f"{POINTS_OUTPUT}{n}")
     else:
         print(f"You sit in class and hear your professor ask, \"Do you know the answer to this one, {player}?\" You don't. You look out the window and think wistfully about the bagel you never got.")
@@ -98,7 +97,7 @@ def end() -> None:
                     print("You literally only have hot sauce. How do you live like this?")
                     points = points + 20
     else:
-        points = points + 10
+        points = points + 20
     print(f"Congrats on surviving today, {player}.")
     print(f"{POINTS_OUTPUT}{points}")
 
