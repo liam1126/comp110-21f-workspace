@@ -10,12 +10,13 @@ WINCING_GUY_EMOJI: str = "\U0001F974"
 TIRED_GUY_EMOJI: str = "\U0001F62B"
 YEEHAW_GUY: str = "\U0001F920"
 
+
 def main() -> None:
     """Entrypoint for experience."""
     game_loop: bool = False   
     global points
     points = 0
-    while game_loop == False: 
+    while game_loop is False: 
         greet()
         first_choice: str = input("You wake up (way later than you hoped, honestly). Do you: a) make yourself a coffee, b) hop on a bus, or c) text your friend to ask for a ride? ")
         if first_choice == "a":
@@ -23,7 +24,8 @@ def main() -> None:
         else:
             if first_choice == "b":
                 bus_ride()
-            else: points = text_friend(points)
+            else: 
+                points = text_friend(points)
             end()
         restart_option: str = input("Try again? a) yes or b) no ")
         if restart_option == "b":
@@ -40,6 +42,7 @@ def greet() -> None:
 def too_much_coffee() -> None:
     """The player chooses to drink coffee."""
     global points
+    global player
     points = points + 20
     print(f"The coffee is much stronger than you initially thought. You dissociate and function on autopilot all day. Nice moves, {player} {COOL_GUY_EMOJI}.")
     print("Maybe try again tomorrow.")
@@ -47,8 +50,9 @@ def too_much_coffee() -> None:
 
 
 def bus_ride() -> None:
-    """The player takes the bus"""
+    """The player takes the bus."""
     global points
+    global player
     choice_on_bus: str = input("The bus seems super crowded, and it looks like you'll have to awkwardly step over a bunch of legs to get a seat. Do you: a) take the bus anyway or b) decide to walk? ")
     if choice_on_bus == "a":
         print("You find a seat next to a really sketchy frat dude that insists the party at his house on Friday will \"be an absolute movie,\" but you do make it to class on time.")
@@ -59,8 +63,8 @@ def bus_ride() -> None:
     print(f"{POINTS_OUTPUT}{points}")
 
 
-def text_friend (n:int) -> int:
-    """"The player texts a friend for a ride."""
+def text_friend(n: int) -> int: 
+    """The player texts a friend for a ride."""
     while n % 20 != 0:
         print("Your friends are either asleep, or they really don't want to drive you. You wait a few minutes.")
         n = n + 10
@@ -80,8 +84,9 @@ def text_friend (n:int) -> int:
 
 
 def end() -> None:
-    "The player comes home at the end of the day."
+    """The player comes home at the end of the day."""
     global points
+    global player
     final_choice: str = input("After a long day of classes, you come home exhausted. Do you: a) check your fridge & freezer to see what you can cook or b) go to bed and pretend food is a contruct? ")
     if final_choice == "a":
         from random import randint
@@ -94,12 +99,13 @@ def end() -> None:
                 print("You catch a second wind and somehow cook yourself a lovely dinner.") 
                 points = points - 10
             else:
-                    print("You literally only have hot sauce. How do you live like this?")
-                    points = points + 20
+                print("You literally only have hot sauce. How do you live like this?")
+                points = points + 20
     else:
         points = points + 20
     print(f"Congrats on surviving today, {player}.")
     print(f"{POINTS_OUTPUT}{points}")
+
 
 if __name__ == "__main__":
     main()
