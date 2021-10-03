@@ -2,9 +2,12 @@
 
 __author__ = "730323188"
 
+
 def all(input: list[int], specific_integer: int) -> bool:
     """Returns True iff all numbers match the indicated number."""
     i: int = 0
+    if len(input) == 0:
+        return False
     while i < len(input):
         item: int = input[i]
         if item != specific_integer:
@@ -32,10 +35,14 @@ def max(input: list[int]) -> int:
     if len(input) == 0:
         raise ValueError("max() arg is an empty List")
     i: int = 0
-    maximum: int = 0
+    maximum: int = input[i]
     while i < len(input):
         char: int = input[i]
         if char > maximum:
             maximum = char
         i += 1
     return maximum
+
+
+sick: list[int] = [1, 1, 1]
+print(all(sick, 1))
