@@ -2,7 +2,10 @@
 
 from exercises.ex06.dictionaries import invert, favorite_color, count
 
+import pytest
+
 __author__ = "730323188"
+
 
 def test_invert_empty() -> None:
     """No input."""
@@ -19,7 +22,6 @@ def test_invert_many_pairs() -> None:
     assert invert({"yes": "no", "up": "down", "left": "right"}) == {"no": "yes", "down": "up", "right": "left"}
 
 
-import pytest
 with pytest.raises(KeyError):
     my_dictionary = {'kris': 'jordan', 'michael': 'jordan'}
     invert(my_dictionary)

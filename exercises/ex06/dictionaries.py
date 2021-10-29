@@ -2,6 +2,7 @@
 
 __author__ = "730323188"
 
+
 def invert(input: dict[str, str]) -> dict[str, str]:
     """Inverts the keys and values of a list."""
     new_dict: dict[str, str] = dict()
@@ -29,12 +30,13 @@ def favorite_color(input: dict[str, str]) -> str:
         color_name = input[beep]
         new_dict[color_name] += 1
         if new_dict[color_name] > maximum:
-           maximum = new_dict[color_name]
-           final_color = color_name
+            maximum = new_dict[color_name]
+            final_color = color_name
     return final_color
 
 
 def count(input: list[str]) -> dict[str, int]:
+    """Counts the number of strings in a list."""
     new_dict: dict[str, int] = dict()
     for beep in input:
         if beep in new_dict:
