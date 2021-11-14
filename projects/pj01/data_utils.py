@@ -1,9 +1,8 @@
-"""Utility functions."""
+"""Utility functions for pj01 analysis."""
 
 from csv import DictReader
 
 __author__ = "730323188"
-
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
     """Read the rows of a csv into a 'table'."""
@@ -50,13 +49,10 @@ def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
         new_vs: list[str] = []
         i: int = 0
         while i < n:
-            if n > len(table):
-                return table
-            else:
-                item_col: list[str] = table[column]
-                item: str = item_col[i]
-                new_vs.append(item)
-                i += 1
+            item_col: list[str] = table[column]
+            item: str = item_col[i]
+            new_vs.append(item)
+            i += 1
         result[column] = new_vs
     return result
 
@@ -90,4 +86,49 @@ def count(vs: list[str]) -> dict[str, int]:
             result[item] += 1
         else:
             result[item] = 1
+    return result
+
+
+def average(col: list[str]) -> float:
+    """Calculates the average as a float."""
+    int_list: list[int] = []
+    for a in col:
+        num: int = int(a)
+        int_list.append(num)  
+    return sum(int_list) / len(int_list)
+
+
+def greater_than(col: list[str], threshold: int) -> list[bool]:
+    result: list[bool] = []
+    int_list: list[int] = []
+    for strings in col:
+        int_list.append(int(strings))
+    for item in int_list:
+        result.append(item > threshold)
+    return result
+
+
+def less_than(col: list[str], threshold: int) -> list[bool]:
+    result: list[bool] = []
+    int_list: list[int] = []
+    for strings in col:
+        int_list.append(int(strings))
+    for item in int_list:
+        result.append(item < threshold)
+    return result
+
+def masked(col: list[str], mask: list[bool]) -> list[str]:
+    result: list[str] = []
+    for i in range(len(mask)):
+        if mask[i]:
+            result.append(col[i])
+    return result
+
+
+def percentages(vs: dict[str, int]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for keys in vs:
+        per: float = vs[keys] / 573 * 100
+        per = round(per, 2)
+        result[keys] = str(per) + "%"
     return result
