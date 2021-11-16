@@ -8,6 +8,7 @@ __author__ = "730323188"
 
 
 class Simpy:
+    """Simpler implementation of some NumPy capabilities."""
     values: list[float]
 
     def __init__(self, values: list[float]):
@@ -52,3 +53,61 @@ class Simpy:
             for nums in self.values:
                 result.values.append(nums + rhs)
         return result
+
+    def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Overloads the power operator for Simpy objects."""
+        result: Simpy = Simpy([])
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while i < len(self.values):
+                result.values.append(self.values[i] ** rhs.values[i])
+                i += 1
+        else:
+            for nums in self.values:
+                result.values.append(nums ** rhs)
+        return result
+
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Adds the ability to produce a mask from 'equal to' operator."""
+        result: list[bool] = []
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] == rhs.values[i])
+                i += 1
+        else:
+            for nums in self.values:
+                result.append(nums == rhs)
+        return result
+
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Adds the ability to produce a mask from 'greater than' operator."""
+        result: list[bool] = []
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] > rhs.values[i])
+                i += 1
+        else:
+            for nums in self.values:
+                result.append(nums > rhs)
+        return result
+
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Overloads the subscription operator."""
+        if isinstance(rhs, int):    
+            result: float = 0.0
+            i: int = 0
+            while i <= rhs:
+                result = self.values[i]
+                i += 1
+            return result
+        else:
+            other_result: Simpy = Simpy([])
+            for vs in range(len(rhs)):
+                if rhs[vs]:
+                    other_result.values.append(self.values[vs])
+            return other_result
